@@ -20,7 +20,8 @@ export default [
     config: {
       origin: [
         'http://localhost:3000', // Yerel geliştirme ortamı
-        'https://<frontend-domain>.railway.app', // Railway'deki frontend uygulamanız
+        'https://hotelfinderbackend-production.up.railway.app', // Backend domaini
+        'https://<frontend-domain>.railway.app', // Frontend domaini (gerekirse doğru URL'yi yazın)
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // İzin verilen HTTP metodları
       headers: [
