@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservations",
+  "info": {
+    "singularName": "reservation",
+    "pluralName": "reservations",
+    "displayName": "Reservation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hotelName": {
+      "type": "string"
+    },
+    "checkInDate": {
+      "type": "date"
+    },
+    "checkOutDate": {
+      "type": "date"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hotel.hotel",
+      "mappedBy": "reservation"
+    }
+  }
+}
