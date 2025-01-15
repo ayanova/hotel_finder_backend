@@ -1,27 +1,13 @@
-export default [
-  'strapi::logger',
+module.exports = [
   'strapi::errors',
-  {
-    name: 'strapi::security',
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          'connect-src': ["'self'", 'http:', 'https:', 'ws:'], // API bağlantıları ve WebSocket'ler için
-          'img-src': ["'self'", 'data:', 'blob:'], // Görseller için
-          'media-src': ["'self'", 'data:', 'blob:'], // Medya dosyaları için
-          upgradeInsecureRequests: null, // HTTP -> HTTPS zorlamasını devre dışı bırakır
-        },
-      },
-    },
-  },
+  'strapi::security',
   {
     name: 'strapi::cors',
     config: {
       origin: [
-        'http://localhost:3000', // Yerel geliştirme ortamı
-        'https://hotelfinderbackend-production.up.railway.app', // Backend domaini
-        'hotelfinder-production.up.railway.app', // Frontend domaini (gerekirse doğru URL'yi yazın)
+        'http://localhost:3000', // React geliştirme ortamı için
+        'https://hotelfinderfrontend-production.up.railway.app', // Frontend üretim ortamı
+        'https://hotelfinderbackend-production.up.railway.app', // Backend üretim ortamı
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // İzin verilen HTTP metodları
       headers: [
@@ -30,12 +16,12 @@ export default [
         'Origin',
         'Accept',
         'X-Requested-With',
-        'Access-Control-Allow-Origin',
-      ], // İzin verilen başlıklar
-      keepHeadersOnError: true, // Hata durumunda bile CORS başlıklarını eklemeye devam eder
+      ],
+      keepHeadersOnError: true, // Hata durumunda bile başlıkları eklemeye devam et
     },
   },
   'strapi::poweredBy',
+  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
