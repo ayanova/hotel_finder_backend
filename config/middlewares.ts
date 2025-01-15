@@ -7,7 +7,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'http:', 'https:'], // API bağlantıları için
+          'connect-src': ["'self'", 'http:', 'https:', 'ws:'], // API bağlantıları ve WebSocket'ler için
           'img-src': ["'self'", 'data:', 'blob:'], // Görseller için
           'media-src': ["'self'", 'data:', 'blob:'], // Medya dosyaları için
           upgradeInsecureRequests: null, // HTTP -> HTTPS zorlamasını devre dışı bırakır
@@ -23,7 +23,14 @@ export default [
         'https://<frontend-domain>.railway.app', // Railway'deki frontend uygulamanız
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // İzin verilen HTTP metodları
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'], // İzin verilen başlıklar
+      headers: [
+        'Content-Type',
+        'Authorization',
+        'Origin',
+        'Accept',
+        'X-Requested-With',
+        'Access-Control-Allow-Origin',
+      ], // İzin verilen başlıklar
       keepHeadersOnError: true, // Hata durumunda bile CORS başlıklarını eklemeye devam eder
     },
   },
